@@ -1,0 +1,40 @@
+# Visual Studio 2022
+.vs/
+
+# Binäre Dateien
+*.exe
+*.dll
+*.pdb
+
+# NuGet-Pakete
+*.nuget.props
+*.lock.json
+*/bin/
+*/obj/
+
+# Build-Verzeichnisse
+bin/
+obj/
+
+# Verzeichnisse für Anwendungsbilder
+bin/
+obj/
+PublishProfiles/
+Properties/launchSettings.json
+
+# Temporäre Dateien
+*.tmp
+*.log
+
+# Windows-spezifische Dateien
+Thumbs.db
+ehthumbs.db
+
+# Visual Studio Dateien
+*.suo
+*.user
+*.sln.docstates
+
+
+appsettings.json 
+appsettings.*.json
