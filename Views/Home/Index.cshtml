@@ -5,16 +5,15 @@
 <div class="text-center">
     <h1 class="display-4">Project Overview</h1>
     <hr/>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="projectOverviewContainer">
         <div class="col">
             <div class="card text-center">
                 <div class="card-header">
-                    Kanban Board
+                    Project Name
                 </div>
                 <div class="card-body">
                     <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                        With supporting text below as a natural lead-in to additional content.
+                        Project description as always very special.
                     </p>
                     <a href="#" class="btn btn-primary">
                         Go to
@@ -27,86 +26,7 @@
                     </a>
                 </div>
                 <div class="card-footer text-muted">
-                    <span>C#, ASP.NET Core</span><br/>
-                    <span>HTML, CSS, JS</span>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-center">
-                <div class="card-header">
-                    Kanban Board
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                        With supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <a href="#" class="btn btn-primary">
-                        Go to
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        Update
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        Delete
-                    </a>
-                </div>
-                <div class="card-footer text-muted">
-                    <span>C#, ASP.NET Core</span><br />
-                    <span>HTML, CSS, JS</span>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-center">
-                <div class="card-header">
-                    Kanban Board
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                        With supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <a href="#" class="btn btn-primary">
-                        Go to
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        Update
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        Delete
-                    </a>
-                </div>
-                <div class="card-footer text-muted">
-                    <span>C#, ASP.NET Core</span><br />
-                    <span>HTML, CSS, JS</span>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-center">
-                <div class="card-header">
-                    Kanban Board
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                        With supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <a href="#" class="btn btn-primary">
-                        Go to
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        Update
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        Delete
-                    </a>
-                </div>
-                <div class="card-footer text-muted">
-                    <span>C#, ASP.NET Core</span><br />
-                    <span>HTML, CSS, JS</span>
+                    C#, ASP.NET Core, HTML, CSS, JS
                 </div>
             </div>
         </div>
@@ -117,20 +37,32 @@
 <h2 class="display-7">New Project</h2>
 
 <div class="d-flex flex-wrap border border-secondary rounded">
-    <div class="form-floating w-100" style="margin-top: 20px; margin-left: 15px; margin-right: 15px;">
-        <input type="text" class="form-control" id="projectNameInput" placeholder="Project name*">
+    <div 
+        class="form-floating w-100" style="margin-top: 20px; margin-left: 15px; margin-right: 15px;">
+        <input 
+            type="text" class="form-control" id="projectNameInput" placeholder="Project name*" 
+            oninput="checkInputValuesAndHandleCreateButton()" required>
         <label for="projectNameInput">Project name*</label>
     </div>
-    <div class="form-floating w-100" style="margin-top: 10px; margin-bottom: 10px; margin-left: 15px; margin-right: 15px;">
-        <input type="text" class="form-control" id="projectDescriptionInput" placeholder="Project description">
+    <div 
+        class="form-floating w-100" 
+        style="margin-top: 10px; margin-bottom: 10px; margin-left: 15px; margin-right: 15px;">
+        <input 
+            type="text" class="form-control" id="projectDescriptionInput" placeholder="Project description">
         <label for="projectDescriptionInput">Project description</label>
     </div>
-    <div class="form-floating w-100" style="margin-bottom: 20px; margin-left: 15px; margin-right: 15px;">
-        <input type="text" class="form-control" id="projectTechInput" placeholder="Languages / Frameworks*">
+    <div 
+        class="form-floating w-100" 
+        style="margin-bottom: 20px; margin-left: 15px; margin-right: 15px;">
+        <input 
+            type="text" class="form-control" id="projectTechInput" placeholder="Languages / Frameworks*" 
+            oninput="checkInputValuesAndHandleCreateButton()" required>
         <label for="projectTechInput">Languages / Frameworks*</label>
     </div>
 </div>
 
 <hr/>
 
-<input class="btn btn-primary" type="submit" value="Create Project" onclick="">
+<input 
+    class="btn btn-primary" type="button" value="Create Project" id="btnCreateProject" 
+    onclick="getInputValuesAndCreateNewProjectCard()" disabled>
