@@ -1,6 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div>
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+<div class="text-center">
+    <table 
+        class="table table-bordered table-striped" id="kanbanTable"
+        style="height: 75vh;table-layout: fixed;width: 100%;">
+        <thead style="width: 20%;">
+            <tr>
+                <th scope="col">Backlog</th>
+                <th scope="col">To Do</th>
+                <th scope="col">WIP</th>
+                <th scope="col">Testing</th>
+                <th scope="col">Done</th>
+            </tr>
+        </thead>
+        <tbody style="width: 20%;">
+            <tr>
+                <td scope="col"></td>
+                <td scope="col"></td>
+                <td scope="col"></td>
+                <td scope="col"></td>
+                <td scope="col"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" id="createTicketButton" onclick="createTicket();">Create Ticket</button>
+</div>

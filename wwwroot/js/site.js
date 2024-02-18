@@ -1,4 +1,7 @@
-﻿
+﻿// ##################################################################
+// Begin Index.cshtml
+// ##################################################################
+
 function checkInputValuesAndHandleCreateButton() {
 
     
@@ -68,3 +71,60 @@ function getInputValuesAndCreateNewProjectCard() {
     // Set the create project button back to disabled
     document.getElementById("btnCreateProject").disabled = true;
 }
+
+// ##################################################################
+// End Index.cshtml
+// ##################################################################
+
+// ##################################################################
+// Begin Privacy.cshtml
+// ##################################################################
+
+// Funktion zum Initialisieren des Drag & Drop-Verhaltens
+function initDragAndDrop() {
+    const cells = document.querySelectorAll('#kanbanTable td');
+
+    cells.forEach(cell => {
+        cell.setAttribute('draggable', 'true');
+
+        cell.addEventListener('dragstart', handleDragStart);
+        cell.addEventListener('dragover', handleDragOver);
+        cell.addEventListener('drop', handleDrop);
+    });
+}
+
+// Event-Handler für den Start des Drag-Vorgangs
+function handleDragStart(event) {
+
+
+}
+
+// Event-Handler für das Drag-Over-Ereignis
+function handleDragOver(event) {
+
+}
+
+// Event-Handler für das Drop-Ereignis
+function handleDrop(event) {
+
+}
+
+// Drag & Drop initialisieren, wenn das DOM geladen ist
+document.addEventListener('DOMContentLoaded', initDragAndDrop);
+
+function createTicket() {
+    // Neues Ticket-Element erstellen
+    var newTicket = document.createElement('div');
+    newTicket.textContent = 'New Ticket'; // Hier kannst du den Textinhalt des Tickets festlegen
+    newTicket.id = "ticket";
+
+    // Das erste <td> Element in der ersten Zeile der Tabelle auswählen
+    var firstColumn = document.querySelector('#kanbanTable tbody tr:first-child td:first-child');
+
+    // Das neue Ticket-Element der ersten Spalte hinzufügen
+    firstColumn.appendChild(newTicket);
+}
+
+// ##################################################################
+// End Privacy.cshtml
+// ##################################################################
