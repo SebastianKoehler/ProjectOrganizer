@@ -80,43 +80,54 @@ function getInputValuesAndCreateNewProjectCard() {
 // Begin Privacy.cshtml
 // ##################################################################
 
-// Funktion zum Initialisieren des Drag & Drop-Verhaltens
-function initDragAndDrop() {
-    const cells = document.querySelectorAll('#kanbanTable td');
+const draggableTickets = document.querySelectorAll('.draggableTicket');
+const dropZones = document.querySelectorAll('.ticketDropZone');
 
-    cells.forEach(cell => {
-        cell.setAttribute('draggable', 'true');
+document.addEventListener("dragstart", event => {
+    event.dataTransfer.setData('text/plain', event.target.innerHTML);
+    event.dataTransfer.dropEffect = 'move';
 
-        cell.addEventListener('dragstart', handleDragStart);
-        cell.addEventListener('dragover', handleDragOver);
-        cell.addEventListener('drop', handleDrop);
-    });
-}
-
-// Event-Handler für den Start des Drag-Vorgangs
-function handleDragStart(event) {
+    // Dem Element eine Klasse hinzufügen, um es zu markieren
+    event.target.classList.add('dragged');
+});
 
 
-}
+dropZones.forEach(dropZone => {
+    dropZone.addEventListener("dragover", event => {
+        event.preventDefault();
+        const ticket = document.querySelector(".dragged");
+        dropZone.appendChild(ticket);
+    })
+});
 
-// Event-Handler für das Drag-Over-Ereignis
-function handleDragOver(event) {
+document.addEventListener("drop", event => {
+    event.preventDefault();
+    const draggedData = event.dataTransfer.getData('text/plain');
+    const targetCell = event.target;
 
-}
+    // Überprüfen, ob das Ziel nicht bereits das gezogene Element enthält
+    if (targetCell.innerHTML !== draggedData) {
+        // Wenn das Ziel nicht die aktuelle Zelle ist, füge den Inhalt hinzu und entferne ihn aus der ursprünglichen Zelle
+        if (targetCell.innerHTML !== draggedData) {
+            targetCell.innerHTML = draggedData;
 
-// Event-Handler für das Drop-Ereignis
-function handleDrop(event) {
+            // Suchen Sie nach der Zelle, die das gezogene Element enthält, und entfernen Sie es daraus
+            const sourceCell = document.querySelector('td.dragged');
+            if (sourceCell) {
+                sourceCell.innerHTML = '';
+                sourceCell.classList.remove('dragged'); // Klasse entfernen, da das Element verschoben wurde
+            }
+        }
+    }
+});
 
-}
-
-// Drag & Drop initialisieren, wenn das DOM geladen ist
-document.addEventListener('DOMContentLoaded', initDragAndDrop);
 
 function createTicket() {
     // Neues Ticket-Element erstellen
     var newTicket = document.createElement('div');
     newTicket.textContent = 'New Ticket'; // Hier kannst du den Textinhalt des Tickets festlegen
-    newTicket.id = "ticket";
+    newTicket.className = "draggableTicket";
+    newTicket.draggable = "true";
 
     // Das erste <td> Element in der ersten Zeile der Tabelle auswählen
     var firstColumn = document.querySelector('#kanbanTable tbody tr:first-child td:first-child');
