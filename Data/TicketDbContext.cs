@@ -10,5 +10,6 @@ namespace ProjectOrganizer.Data
         }
 
         public DbSet<Ticket> Tickets { get; set; }
+        
     }
 }
