@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjectOrganizer.Data;
-using Microsoft.Extensions.Configuration;
 
 public class Startup
 {
@@ -14,15 +10,16 @@ public class Startup
         _configuration = configuration;
     }
 
-    public void ConfigureServices(IServiceCollection services)
+    public void ConfigureTicketServices(IServiceCollection services)
     {
         services.AddDbContext<TicketDbContext>(options =>
             options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void ConfigureProjectServices(IServiceCollection services)
     {
-
+        services.AddDbContext<ProjectDbContext>(options =>
+            options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
     }
 }
 

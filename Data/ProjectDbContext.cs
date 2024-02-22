@@ -3,10 +3,11 @@ using ProjectOrganizer.Models;
 
 namespace ProjectOrganizer.Data
 {
-    public class TicketDbContext : DbContext
+    public class ProjectDbContext : DbContext
     {
         protected readonly IConfiguration Configuration;
-        public TicketDbContext(IConfiguration configuration) 
+
+        public ProjectDbContext(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -16,7 +17,6 @@ namespace ProjectOrganizer.Data
             options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
         }
 
-        public DbSet<Ticket> Tickets { get; set; }
-        
+        public DbSet<Project> Projects { get; set; }
     }
 }

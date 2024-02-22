@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ProjectOrganizer.Models
+﻿namespace ProjectOrganizer.Models
 {
     public class Project
     {
