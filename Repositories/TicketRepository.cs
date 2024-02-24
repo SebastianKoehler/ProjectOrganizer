@@ -6,10 +6,10 @@ namespace ProjectOrganizer.Repositories
 {
     public class TicketRepository : ITicketRepository, IDisposable
     {
-        private TicketDbContext _dbContext;
+        private ProjectOrganizerDbContext _dbContext;
         private bool disposed = false;
 
-        public TicketRepository(TicketDbContext dbContext)
+        public TicketRepository(ProjectOrganizerDbContext dbContext)
         {  
             _dbContext = dbContext; 
         }

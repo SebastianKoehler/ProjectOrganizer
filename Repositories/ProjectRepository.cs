@@ -6,10 +6,10 @@ namespace ProjectOrganizer.Repositories
 {
     public class ProjectRepository : IProjectRepository, IDisposable
     {
-        private ProjectDbContext _dbContext;
+        private ProjectOrganizerDbContext _dbContext;
         private bool disposed = false;
 
-        public ProjectRepository(ProjectDbContext dbContext)
+        public ProjectRepository(ProjectOrganizerDbContext dbContext)
         {
             _dbContext = dbContext;
         }

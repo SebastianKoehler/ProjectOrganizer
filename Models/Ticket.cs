@@ -8,6 +8,6 @@
         public required string Status { get; set; }
 
         public required int ProjectId { get; set; }
-        public required Project Project { get; set; }
+        public Project? Project { get; set; }
     }
 }

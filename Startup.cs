@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using ProjectOrganizer.Data;
+using ProjectOrganizer.Services;
 
 public class Startup
 {
@@ -10,16 +12,22 @@ public class Startup
         _configuration = configuration;
     }
 
-    public void ConfigureTicketServices(IServiceCollection services)
+    public void ConfigureServices(IServiceCollection services)
     {
-        services.AddDbContext<TicketDbContext>(options =>
+        services.AddDbContext<ProjectOrganizerDbContext>(options =>
             options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
+
+        services.AddScoped<ProjectService>();
     }
 
-    public void ConfigureProjectServices(IServiceCollection services)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        services.AddDbContext<ProjectDbContext>(options =>
-            options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
+        using (var scope = app.ApplicationServices.CreateScope()) 
+        { 
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<ProjectOrganizerDbContext>();
+            context.Database.EnsureCreated();
+            context.Database.Migrate();
+        }
     }
 }
-
