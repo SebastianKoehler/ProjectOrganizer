@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectOrganizer.Models;
-using ProjectOrganizer.Services;
 using System.Diagnostics;
 
 namespace ProjectOrganizer.Controllers
@@ -8,12 +7,10 @@ namespace ProjectOrganizer.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        // private readonly ProjectService _projectService;
-        private readonly ProjectService projectService;
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            // _projectService = projectService;
         }
 
         public IActionResult Index()
@@ -28,14 +25,7 @@ namespace ProjectOrganizer.Controllers
 
         public IActionResult Test()
         {
-            // BUGFIX: System.NullReferenceException: "Object reference not set to an instance of an object."
-
-            var projectService = HttpContext.RequestServices.GetService<ProjectService>();
-            var projects = projectService.GetProjects();
-            return View(projects);
-
-            // var projects = _projectService.GetProjects();
-            // return View(projects);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

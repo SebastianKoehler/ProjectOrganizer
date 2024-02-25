@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjectOrganizer.Data;
 using ProjectOrganizer.Services;
+using ProjectOrganizer.Interfaces;
+using ProjectOrganizer.Repositories;
 
 public class Startup
 {
@@ -14,10 +15,18 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        // DbContext registrieren
         services.AddDbContext<ProjectOrganizerDbContext>(options =>
             options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
 
-        services.AddScoped<ProjectService>();
+        // Services und Repositories registrieren
+        services.AddScoped<IProjectService, ProjectService>();
+        services.AddScoped<ITicketService, TicketService>();
+        services.AddScoped<IProjectRepository, ProjectRepository>();
+        services.AddScoped<ITicketRepository, TicketRepository>();
+
+        // Andere Dienste registrieren
+        services.AddLogging();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

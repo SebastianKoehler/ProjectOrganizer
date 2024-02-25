@@ -8,34 +8,7 @@
     <div>
         <h1 class="display-4">@ViewData["Title"]</h1>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Technologies</th>
-                <th>Tickets</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var project in Model)
-            {
-                <tr>
-                    <td>@project.Id</td>
-                    <td>@project.Name</td>
-                    <td>@project.Description</td>
-                    <td>@project.Technologies</td>
-                    <td>
-                        <ul>
-                            @foreach (var tickets in project.Tickets)
-                            {
-                                <li>@tickets.Title - @tickets.Description</li>
-                            }
-                        </ul>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div>
+        <button onclick=""></button>
+    </div>
 </div>
