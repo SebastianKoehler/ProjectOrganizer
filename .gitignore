@@ -29,6 +29,7 @@ Properties/launchSettings.json
 # Windows-spezifische Dateien
 Thumbs.db
 ehthumbs.db
+ProjectOrganizer.db
 
 # Visual Studio Dateien
 *.suo

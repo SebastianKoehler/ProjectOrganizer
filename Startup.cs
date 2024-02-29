@@ -15,6 +15,8 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddRazorPages();
+
         // DbContext registrieren
         services.AddDbContext<ProjectOrganizerDbContext>(options =>
             options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
